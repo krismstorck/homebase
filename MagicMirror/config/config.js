@@ -127,7 +127,7 @@ let config = {
 				transitionInterval: 120000,
 				showPageIndicators: true,
 				showPageControls: false,
-				ignoreModules: ['MMM-OnScreenMenu'], ['MMM-WeatherBackground'],
+				ignoreModules: ['MMM-OnScreenMenu', 'MMM-WeatherBackground'],
 				slides: {
 					main: ['clock', 'weather'],
 					1: ['clock', 'MMM-pihole-stats']
