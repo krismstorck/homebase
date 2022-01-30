@@ -131,6 +131,7 @@ let config = {
 				slides: {
 					main: ['clock', 'weather'],
 					1: ['clock', 'MMM-pihole-stats']
+				}
 			}
 		}
 
