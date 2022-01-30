@@ -46,7 +46,7 @@ let config = {
                	enableKeyboard: false,
 				menuItems: { 
 					minimize: { title: "Minimize", icon: "window-minimize" },
-					}
+					},
 			}
 		},
 
@@ -130,7 +130,7 @@ let config = {
 				ignoreModules: ['MMM-OnScreenMenu'], ['MMM-WeatherBackground'],
 				slides: {
 					main: ['clock', 'weather'],
-					1: ['clock', 'MMM-pihole-stats'],
+					1: ['clock', 'MMM-pihole-stats']
 			}
 		}
 
