@@ -46,6 +46,7 @@ let config = {
                	enableKeyboard: false,
 				menuItems: { 
 					minimize: { title: "Minimize", icon: "window-minimize" },
+					}
 			}
 		},
 
