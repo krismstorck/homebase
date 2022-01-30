@@ -39,31 +39,45 @@ let config = {
 
 	modules: [
 		{
+			module: 'MMM-OnScreenMenu',
+            position: 'top_right',
+			config: {
+                touchMode: true,
+               	enableKeyboard: false,
+				menuItems: { 
+					minimize: { title: "Minimize", icon: "window-minimize" },
+			}
+		},
+
+		{
   			module: "MMM-WeatherBackground",
   			// don't assign position.
   			config: {
-    verbose: true, // If you want to leave some log message, set this as true
-    source: "weather", // "weather", "MMM-NOAA3", "MMM-DarkskyForecast".  If you want to use different source, manually set `notification` and `payloadConverter`
-    size: null, // "1920x480", whatever....
-    hemisphere: "n", // 'n', 's' or null/false  (For backward compatibility) // will be deprecated. use monthMap instead.
-    monthMap: ['NewYear', 'winter', 'spring', 'spring flower', 'joy', 'summer rain', 'summer beach', 'summer vacation', 'autumn', 'autumn leaves', 'winter', 'christmas'], // set your custom keyword for each month.
-    //monthMap: ['winter', 'winter', 'spring', 'spring', 'spring', 'summer', 'summer', 'summer', 'autumn', 'autumn', 'autumn', 'winter'],// 
-    //monthMap: null, false, or []
-    targetDOM: ".fullscreen.below", //null or DomSelector for target. (if null, weather will be targeted.)
-    notification: null, // when you need another `source` from `source, modify this.
-    payloadConverter: null, // your custom payloadConverter callback.
-    defaultCollection: null, // When matched collection not found, this will be used.
-    externalCollections: "collections.json", // or null. // I recommend you rename this file to prevent update-conflicts.
-    collections: {}, // This will be combined with externalCollections. (For backward compatibility)
-  }
+    			verbose: true, // If you want to leave some log message, set this as true
+    			source: "weather", // "weather", "MMM-NOAA3", "MMM-DarkskyForecast".  If you want to use different source, manually set `notification` and `payloadConverter`			
+    			size: null, // "1920x480", whatever....			
+    			hemisphere: "n", // 'n', 's' or null/false  (For backward compatibility) //will be deprecated. use monthMap instead.
+    			monthMap: ['NewYear', 'winter', 'spring', 'spring flower', 'joy', 'summer rain', 'summer beach', 'summer vacation', 'autumn', 'autumn leaves', 'winter', 'christmas'], // set your custom keyword for each month.			
+    			//monthMap: ['winter', 'winter', 'spring', 'spring', 'spring', 'summer', 'summer', 'summer', 'autumn', 'autumn', 'autumn', 'winter'],// 			
+    			//monthMap: null, false, or []			
+    			targetDOM: ".fullscreen.below", //null or DomSelector for target. (if null, weather will be targeted.)			
+    			notification: null, // when you need another `source` from `source, modify this.			
+    			payloadConverter: null, // your custom payloadConverter callback.
+    			defaultCollection: null, // When matched collection not found, this will be used.			
+    			externalCollections: "collections.json", // or null. // I recommend you rename this file to prevent update-conflicts.
+    			collections: {}, // This will be combined with externalCollections. (For backward compatibility)
+    		}
 		},
+
 		{
 			module: "alert",
 		},
+
 		{
 			module: "updatenotification",
 			position: "top_bar"
 		},
+
 		{
 			module: "clock",
 			position: "top_left"
@@ -71,7 +85,7 @@ let config = {
 
 		{
 			module: "weather",
-			position: "top_right",
+			position: "top_left",
 			config: {
 				weatherProvider: "openweathermap",
 				type: "current",
@@ -80,9 +94,10 @@ let config = {
 				apiKey: "f1c19627479b1e6871904373d70b9c50"
 			}
 		},
+
 		{
 			module: "weather",
-			position: "top_right",
+			position: "top_left",
 			header: "Weather Forecast",
 			config: {
 				weatherProvider: "openweathermap",
@@ -91,6 +106,30 @@ let config = {
 				locationID: "4347778", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
 				apiKey: "f1c19627479b1e6871904373d70b9c50",
 				roundTemp: true
+			}
+		},
+
+		{
+    		module: "MMM-pihole-stats",
+    		position: "top_right", // Or any valid MagicMirror position.
+    		config: {
+    			apiURL: "http://10.1.10.6/admin/api.php"
+      			// apiToken: "0123456789abcdef" // See 'Configuration options' for more information.
+      		}
+      	},
+
+		{
+			module: "MMM-Carousel",
+			position: "bottom_bar",
+			config: {
+				mode: "slides",
+				transitionInterval: 120000,
+				showPageIndicators: true,
+				showPageControls: false,
+				ignoreModules: ['MMM-OnScreenMenu'], ['MMM-WeatherBackground'],
+				slides: {
+					main: ['clock', 'weather'],
+					1: ['clock', 'MMM-pihole-stats'],
 			}
 		}
 
